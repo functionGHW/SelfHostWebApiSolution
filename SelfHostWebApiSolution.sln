@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleHost", "ConsoleHost\ConsoleHost.csproj", "{DC014EE7-FB3A-472C-8EAC-C71AF0597ADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary.Web.WebApi", "HelperLibrary.Web.WebApi\HelperLibrary.Web.WebApi.csproj", "{A0C9ACEF-E8BC-4612-8E7A-D74F35377B94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoService", "DemoService\DemoService.csproj", "{6C81B73E-E51E-4D73-A76E-122B5F8497C6}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC014EE7-FB3A-472C-8EAC-C71AF0597ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC014EE7-FB3A-472C-8EAC-C71AF0597ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC014EE7-FB3A-472C-8EAC-C71AF0597ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC014EE7-FB3A-472C-8EAC-C71AF0597ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C9ACEF-E8BC-4612-8E7A-D74F35377B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C9ACEF-E8BC-4612-8E7A-D74F35377B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C9ACEF-E8BC-4612-8E7A-D74F35377B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C9ACEF-E8BC-4612-8E7A-D74F35377B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C81B73E-E51E-4D73-A76E-122B5F8497C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C81B73E-E51E-4D73-A76E-122B5F8497C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C81B73E-E51E-4D73-A76E-122B5F8497C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C81B73E-E51E-4D73-A76E-122B5F8497C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
