@@ -29,6 +29,8 @@ namespace ConsoleHost
         public void Configuration(IAppBuilder app)
         {
             var config = new HttpConfiguration();
+            config.MapHttpAttributeRoutes();
+
             // 通过配置文件动态配置路由
             var configItems = ConfigLoader.Load(Path.Combine(ServicesFolder, "GlobalConfig.jsonconfig"));
             var routes = config.Routes;
@@ -41,13 +43,14 @@ namespace ConsoleHost
                 }
             }
             // 强制加载全部api的程序集文件
-            GetApiAssemblyList();
+            LoadApiAssemblyList(config);
             // 使用区分命名空间的控制器选择器，解决控制器名称冲突
             config.Services
-                .Replace(typeof(IHttpControllerSelector), 
+                .Replace(typeof(IHttpControllerSelector),
                     new NamespaceHttpControllerSelector(config));
-            
+
             config.MessageHandlers.Add(new MyHandler());
+
             // 移除xml格式，只返回json格式
             //var formatters = config.Formatters;
             //formatters.Remove(formatters.XmlFormatter);
@@ -55,14 +58,25 @@ namespace ConsoleHost
             app.UseWebApi(config);
         }
 
-        private Assembly[] GetApiAssemblyList()
+        private void LoadApiAssemblyList(HttpConfiguration config)
         {
-            var list = new List<Assembly>();
             foreach (var dllFile in Directory.GetFiles(ServicesFolder, "*.dll"))
             {
-                list.Add(Assembly.LoadFile(dllFile));
+                var asm = Assembly.LoadFile(dllFile);
+                var initializerType = asm.GetType(asm.GetName().Name + ".ServiceInitializer", false);
+                if (initializerType != null)
+                {
+                    try
+                    {
+                        dynamic initializer = Activator.CreateInstance(initializerType);
+                        initializer.Initialize(config);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
             }
-            return list.ToArray();
         }
     }
 
