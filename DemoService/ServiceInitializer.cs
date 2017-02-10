@@ -18,7 +18,7 @@ namespace DemoService
     {
         public void Initialize(HttpConfiguration config)
         {
-            Console.WriteLine("Loaded");
+            Console.WriteLine("DemoService Loaded");
         }
     }
 }

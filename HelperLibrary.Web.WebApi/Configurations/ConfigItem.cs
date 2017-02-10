@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace HelperLibrary.Web.WebApi.Configurations
 {
@@ -21,6 +22,23 @@ namespace HelperLibrary.Web.WebApi.Configurations
 
         public string[] Namespaces { get; set; }
 
-        public Dictionary<string, object> Defaults { get; set; }
+        private Dictionary<string, object> defaults;
+        public Dictionary<string, object> Defaults
+        {
+            get { return defaults; }
+            set
+            {
+                if (value != null)
+                {
+                    var keys = value.Keys.ToArray();
+                    foreach (var key in keys)
+                    {
+                        if (value[key] == null)
+                            value[key] = RouteParameter.Optional;
+                    }
+                }
+                defaults = value;
+            }
+        }
     }
 }

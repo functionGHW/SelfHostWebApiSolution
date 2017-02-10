@@ -8,13 +8,14 @@
     # 路由名称
     "Name": "Default",
     # 路由模版
-    "RouteTemplate": "{controller}/{action}",
+    "RouteTemplate": "api/{controller}/{action}/{id}",
     # 控制器类型所在命名空间列表
     "Namespaces": [ "DemoService.Controllers" ],
-    # 默认路由参数
+    # 默认路由参数, 使用null表示可选参数RouteParameter.Optional
     "Defaults": {
       "controller": "Test",
-      "action": "Index"
+      "action": "Index",
+	  "id": null
     }
   }
 ]

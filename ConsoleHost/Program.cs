@@ -13,6 +13,7 @@ namespace ConsoleHost
         static void Main(string[] args)
         {
             string baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+            Console.WriteLine("Base URL:" + baseUrl);
             using (Microsoft.Owin.Hosting.WebApp.Start<Startup>(baseUrl))
             {
                 Console.WriteLine("Press ENTER to exit");
